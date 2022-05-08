@@ -1,17 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>User</title>
+    <title>Добавить пользователя</title>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -21,32 +21,35 @@
         </ul>
     </div>
 </nav>
-
 <div class="container">
     <div class="row py-2">
-
-        <div class="col-12 50px" >
-            <table class="table table-bordered my-2">
-                <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Ник</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Фамилия</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th th:text="${user.id}"></th>
-                    <td th:text="${user.username}"></td>
-                    <td th:text="${user.firstName}"></td>
-                    <td th:text="${user.lastName}"></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-12">
+            <form th:action="@{/admin/add}" th:method="post">
+                <div class="form-group">
+                    <label>Ник
+                        <input type="text" class="form-control" name="username" placeholder="Введите ник">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Пароль
+                        <input type="password" class="form-control" name="password"
+                               placeholder="Введите пароль">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Имя
+                        <input type="text" class="form-control" name="firstName" placeholder="Введите имя">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Фамилия
+                        <input type="text" class="form-control" name="lastName" placeholder="Введите фамилию">
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
         </div>
     </div>
-
 </div>
 
 <!-- Optional JavaScript -->

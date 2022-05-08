@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>User</title>
+    <title>Пользователи</title>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -25,28 +24,38 @@
 <div class="container">
     <div class="row py-2">
 
-        <div class="col-12 50px" >
+        <div class="col-12 mt-3">
+            <a class="btn btn-primary" th:href="@{/admin/add}">Добавить пользователя</a>
+        </div>
+
+        <div class="col-12 50px">
+
             <table class="table table-bordered my-2">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Ник</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Фамилия</th>
+                    <td>Id</td>
+                    <td>Ник</td>
+                    <td>Имя</td>
+                    <td>Фамилия</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th th:text="${user.id}"></th>
-                    <td th:text="${user.username}"></td>
-                    <td th:text="${user.firstName}"></td>
-                    <td th:text="${user.lastName}"></td>
+                <tr th:each="u : ${users}">
+                    <td th:text="${u.id}"></td>
+                    <td th:text="${u.username}"></td>
+                    <td th:text="${u.firstName}"></td>
+                    <td th:text="${u.lastName}"></td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/admin/update/{id}(id = ${u.id})}"><i
+                                class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" th:href="@{/admin/delete/{id}(id = ${u.id})}"><i
+                                class="far fa-trash-alt"></i></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>
 
 <!-- Optional JavaScript -->
